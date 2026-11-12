@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Smart RTL fixture</title>
+<style>
+  body { font: 14px/1.5 -apple-system, sans-serif; max-width: 640px; margin: 20px auto; text-align: left; }
+  .markdown-root, .composer-human-message { border: 1px solid #ccc; padding: 8px 12px; margin: 12px 0; }
+  pre { background: #f3f3f3; padding: 8px; }
+  ul { padding-left: 20px; }
+  /* Copied from Cursor's workbench.glass.main.css so the question card lays out as it does there. */
+  .composer-questionnaire-toolbar { border: 1px solid #ccc; padding: 8px 12px; margin: 12px 0; }
+  .composer-questionnaire-toolbar-questions { display: flex; flex-direction: column; gap: 12px; }
+  .composer-questionnaire-toolbar-question{display:flex;flex-direction:column;gap:2px;margin-left:4px}
+  .composer-questionnaire-toolbar-question-label{align-items:flex-start;display:flex;font-size:13px;font-weight:590;gap:8px;line-height:135%;margin-left:6px}
+  .composer-questionnaire-toolbar-question-number{flex-shrink:0;min-width:12px;text-align:left;width:12px}
+  .composer-questionnaire-toolbar-options{display:flex;flex-direction:column;margin-left:-4px;margin-top:4px;overflow:hidden}
+  .composer-questionnaire-toolbar-option{align-items:flex-start;border:1px solid transparent;border-radius:4px;display:flex;gap:8px;overflow:hidden;padding:3px 4px}
+  .composer-questionnaire-toolbar-option-letter{align-items:center;background:transparent;border:1px solid #aaa;border-radius:3px;display:inline-flex;font-size:10px;font-weight:700;height:19px;justify-content:center;min-width:19px;padding:1px}
+  .composer-questionnaire-toolbar-option-label{flex:1;font-size:13px}
+  .composer-questionnaire-toolbar-freeform-input{background:transparent;border:none;flex:1;font-family:inherit;font-size:13px;line-height:1.4;min-width:0;outline:none;padding:0;resize:none}
+</style>
+</head>
+<body>
+  <div id="english" class="anysphere-markdown-container-root"><div class="markdown-root">
+    <p>Here is how to install the package. Run the command below.</p>
+    <pre><code>npm install react</code></pre>
+    <ul><li>First item</li><li>Second item</li></ul>
+  </div></div>
+
+  <div id="arabic" class="anysphere-markdown-container-root"><div class="markdown-root">
+    <h3>طريقة التثبيت</h3>
+    <p>React هو مكتبة لبناء الواجهات. شغّل الأمر <code>npm install react</code> في الترمنال.</p>
+    <pre><code>const x = "مرحبا";
+console.log(x);</code></pre>
+    <ul><li>أول عنصر</li><li>Second item in English.</li></ul>
+    <p>This English paragraph lives inside an Arabic answer.</p>
+  </div></div>
+
+  <div id="mostly-english" class="anysphere-markdown-container-root"><div class="markdown-root">
+    <p>The function returns a promise that resolves once the file is written to disk, so remember to await it (يعني استنى).</p>
+  </div></div>
+
+  <div id="code-heavy" class="anysphere-markdown-container-root"><div class="markdown-root">
+    <p>عدّل الملف ده:</p>
+    <pre><code>export function handleRequest(request, response) { return response.json({ ok: true, message: "done" }) }</code></pre>
+  </div></div>
+
+  <div id="en-with-ar" class="anysphere-markdown-container-root"><div class="markdown-root">
+    <p>Here is the fix for the upload flow, with the reasoning below.</p>
+    <p>بالعربي: الـ link بيفضل شغال ساعة، إلا لو اتعمل share فبيبقى ربع ساعة بس.</p>
+    <ul><li>First step in English</li><li>Second step in English</li><li>خطوة تالتة بالعربي</li></ul>
+    <ul><li>ضيف await قبل الـ request</li><li>Handle errors.</li><li>اكتب test للحالة دي</li></ul>
+    <p>Let me know if you want tests for this.</p>
+  </div></div>
+
+  <div class="composer-questionnaire-toolbar"><div class="composer-questionnaire-toolbar-questions">
+    <div class="composer-questionnaire-toolbar-question"><div class="composer-questionnaire-toolbar-question-label"><div class="composer-questionnaire-toolbar-question-number">1.</div>تحب نستخدم أنهي framework للواجهة؟</div><div class="composer-questionnaire-toolbar-options"><div class="composer-questionnaire-toolbar-option" role="button"><button class="composer-questionnaire-toolbar-option-letter" type="button">A</button><span class="composer-questionnaire-toolbar-option-label">React (أسرع في البداية)</span></div><div class="composer-questionnaire-toolbar-option" role="button"><button class="composer-questionnaire-toolbar-option-letter" type="button">B</button><span class="composer-questionnaire-toolbar-option-label">Vue</span></div><div class="composer-questionnaire-toolbar-option" role="button"><button class="composer-questionnaire-toolbar-option-letter" type="button">C</button><span class="composer-questionnaire-toolbar-option-label">مش فارقة معايا، اختار انت</span></div><div class="composer-questionnaire-toolbar-option composer-questionnaire-toolbar-option-freeform" role="button"><button class="composer-questionnaire-toolbar-option-letter" type="button">D</button><textarea class="composer-questionnaire-toolbar-freeform-input" placeholder="Other..." rows="1"></textarea></div></div></div>
+    <div class="composer-questionnaire-toolbar-question"><div class="composer-questionnaire-toolbar-question-label"><div class="composer-questionnaire-toolbar-question-number">2.</div>Which database should we use?</div><div class="composer-questionnaire-toolbar-options"><div class="composer-questionnaire-toolbar-option" role="button"><button class="composer-questionnaire-toolbar-option-letter" type="button">A</button><span class="composer-questionnaire-toolbar-option-label">PostgreSQL</span></div><div class="composer-questionnaire-toolbar-option" role="button"><button class="composer-questionnaire-toolbar-option-letter" type="button">B</button><span class="composer-questionnaire-toolbar-option-label">SQLite</span></div><div class="composer-questionnaire-toolbar-option composer-questionnaire-toolbar-option-freeform" role="button"><button class="composer-questionnaire-toolbar-option-letter" type="button">C</button><textarea class="composer-questionnaire-toolbar-freeform-input" placeholder="Other..." rows="1"></textarea></div></div></div>
+  </div></div>
+
+  <div id="user" class="composer-human-message">عايز اعمل function بتعمل sort للـ array</div>
+
+  <div id="stream" class="anysphere-markdown-container-root"><div class="markdown-root"><p id="stream-p">OK</p></div></div>
+
+  <script src="../runtime/smartRtl.js"></script>
+</body>
+</html>

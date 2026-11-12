@@ -1,0 +1,13 @@
+.vscode/**
+.github/**
+src/**
+test/**
+launcher/**
+node_modules/**
+out/**/*.map
+tsconfig.json
+.gitignore
+.vscodeignore
+PUBLISHING.md
+Cursor RTL.command
+**/*.ts

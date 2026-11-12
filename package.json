@@ -1,0 +1,103 @@
+{
+	"name": "smart-rtl",
+	"displayName": "Smart RTL Chat",
+	"description": "Right-aligns Arabic, Persian and Hebrew in Cursor's chat while English stays left, decided paragraph by paragraph from the text itself, with code always kept left-to-right.",
+	"version": "0.2.2",
+	"publisher": "AbdelrahmanMSalim",
+	"license": "MIT",
+	"icon": "media/icon.png",
+	"engines": {
+		"vscode": "^1.89.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"cursor",
+		"rtl",
+		"arabic",
+		"persian",
+		"hebrew",
+		"chat",
+		"composer"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AbdelrahmanMSalim/smart-rtl.git"
+	},
+	"bugs": {
+		"url": "https://github.com/AbdelrahmanMSalim/smart-rtl/issues"
+	},
+	"extensionKind": [
+		"ui"
+	],
+	"extensionDependencies": [
+		"subframe7536.custom-ui-style"
+	],
+	"activationEvents": [
+		"onStartupFinished"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "smartRtl.apply",
+				"title": "Apply Settings and Reload",
+				"category": "Smart RTL"
+			},
+			{
+				"command": "smartRtl.remove",
+				"title": "Remove Injected Script",
+				"category": "Smart RTL"
+			}
+		],
+		"configuration": {
+			"title": "Smart RTL",
+			"properties": {
+				"smartRtl.threshold": {
+					"type": "number",
+					"default": 0.3,
+					"exclusiveMinimum": 0,
+					"maximum": 1,
+					"scope": "application",
+					"markdownDescription": "Share of the letters, code left out, that must be Arabic, Persian or Hebrew for it to turn right-to-left. Applies to each paragraph, or to the whole reply, depending on `#smartRtl.mode#`. `0.3` flips Arabic written with English terms mixed in, and leaves English quoting a stray Arabic word alone."
+				},
+				"smartRtl.mode": {
+					"type": "string",
+					"default": "paragraph",
+					"enum": [
+						"paragraph",
+						"message"
+					],
+					"enumDescriptions": [
+						"Every paragraph and heading picks its own side, so an Arabic paragraph in an English reply goes right and an English one in an Arabic reply goes left. Lists and tables go with most of their items.",
+						"A whole reply turns right-to-left once it is mostly Arabic, and every paragraph in it aligns right. English replies are left alone."
+					],
+					"scope": "application",
+					"markdownDescription": "Whether direction is decided for each paragraph on its own, or for the reply as a whole."
+				},
+				"smartRtl.messageSelector": {
+					"type": "string",
+					"default": ".anysphere-markdown-container-root, .markdown-root, .ui-agent-transcript-human-bubble, .composer-human-message, .aislash-editor-input-readonly, .aislash-editor-input, .ProseMirror, .interactive-item-container .rendered-markdown, .chat-markdown-part, .font-claude-response .standard-markdown, .font-claude-response .progressive-markdown, [data-testid=\"user-message\"]",
+					"scope": "application",
+					"markdownDescription": "CSS selector for one chat message: Cursor's replies, your own messages and the prompt input. When matches nest, the outermost is judged as the message. Only change this if a Cursor update renames one of these elements."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"build": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"test:runtime": "node test/runtime.test.js",
+		"package": "vsce package",
+		"vscode:prepublish": "npm run build",
+		"vscode:uninstall": "node ./scripts/uninstall.js"
+	},
+	"devDependencies": {
+		"@types/node": "^22.10.2",
+		"@types/vscode": "^1.89.0",
+		"@vscode/vsce": "^3.2.1",
+		"jsdom": "^25.0.1",
+		"typescript": "^5.7.2"
+	}
+}
